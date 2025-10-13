@@ -17,7 +17,5 @@ public class PisoftApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         apple.eat();
-        apple.see();
-
     }
 }
