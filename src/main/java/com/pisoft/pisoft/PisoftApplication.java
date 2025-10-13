@@ -18,5 +18,6 @@ public class PisoftApplication implements CommandLineRunner {
     public void run(String... args) throws Exception {
         apple.eat();
         apple.see();
+
     }
 }
