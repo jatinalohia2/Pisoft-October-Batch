@@ -9,10 +9,4 @@ public class Apple {
         System.out.println("i am eating apple");
     }
 
-    void see(){
-        System.out.println("looking red");
-    }
-
-
-
 }
