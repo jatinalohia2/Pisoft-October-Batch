@@ -19,5 +19,7 @@ public class PisoftApplication implements CommandLineRunner {
         apple.eat();
         apple.see();
         apple.weep();
+        apple.eat();
+        apple.weep();
     }
 }
