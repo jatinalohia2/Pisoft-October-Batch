@@ -6,17 +6,29 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class PisoftApplication implements CommandLineRunner {
+public class PisoftApplication  implements  CommandLineRunner{
 
     @Autowired
-    Apple apple ;
+    Mango mango;
 
-	public static void main(String[] args) {
+    @Autowired
+    Mango mango2;
+
+    @Autowired
+    Mango mango3;
+
+
+    public static void main(String[] args) {
 		SpringApplication.run(PisoftApplication.class, args);
 	}
+
     @Override
     public void run(String... args) throws Exception {
-        apple.eat();
 
+        System.out.println(mango.hashCode());
+        System.out.println(mango2.hashCode());
+        System.out.println(mango3.hashCode());
+
+        System.out.println(mango ==mango2);
     }
 }
