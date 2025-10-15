@@ -17,6 +17,9 @@ public class PisoftApplication  implements  CommandLineRunner{
     @Autowired
     Mango mango3;
 
+    @Autowired
+    DBService dbService;
+
 
     public static void main(String[] args) {
 		SpringApplication.run(PisoftApplication.class, args);
@@ -30,5 +33,8 @@ public class PisoftApplication  implements  CommandLineRunner{
         System.out.println(mango3.hashCode());
 
         System.out.println(mango ==mango2);
+
+        String db = dbService.getDb();
+        System.out.println(db);
     }
 }

@@ -9,7 +9,7 @@ public class AppConfig {
     @Bean
     public Apple getApple(){
         return new Apple();
-    }
+    }   
 
     @Bean
     public Kiwi getKiwi(){
