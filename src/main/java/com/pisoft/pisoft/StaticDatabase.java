@@ -5,9 +5,9 @@ import org.springframework.stereotype.Component;
 
 @Component
 @ConditionalOnProperty(name = "deploy.env" , havingValue = "static")
-public class StatiicDatabase implements DB{
+public class StaticDatabase implements DB{
     @Override
     public String getDatabase() {
-        return "Static Ddatabse";
+        return "Static Database";
     }
 }
