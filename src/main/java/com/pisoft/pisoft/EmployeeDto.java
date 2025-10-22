@@ -32,6 +32,15 @@ public class EmployeeDto {
         this.name = name;
     }
 
+    @Override
+    public String toString() {
+        return "EmployeeDto{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", salary=" + salary +
+                '}';
+    }
+
     public Double getSalary() {
         return salary;
     }
@@ -39,4 +48,7 @@ public class EmployeeDto {
     public void setSalary(Double salary) {
         this.salary = salary;
     }
+
+
+
 }

@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "/employee")
-public class EmployeeController {
 
+public class EmployeeController {
 
 
     @GetMapping(path = "/secretKey")
@@ -24,23 +24,28 @@ public class EmployeeController {
         return "1200";
     }
 
-    @GetMapping("/getEmp/{empId}/{emp}")
+    @GetMapping("/getEmp/{empId}/{name}/{salary}")
     public EmployeeDto getEmployeeById(@PathVariable Integer empId ,
-                                       @PathVariable(name = "emp") Integer e){
+                                       @PathVariable String name ,
+                                       @PathVariable Double salary){
 
-        System.out.println("inside");
-
-        return new EmployeeDto(empId + e, "jatin" , 1200.00);
+        return new EmployeeDto(empId , name , salary);
     }
 
 
     @GetMapping("/getEmp2")
     public String getEmployeeById2(
-            @RequestParam(required = false) String id,
-            @RequestParam(required = false) String name){
+            @RequestParam(required = false , value = "empId") String id,
+            @RequestParam(required = false , value = "n") String name){
         return "this is my id : "+id + " : "+name;
     }
 
+
+    @PostMapping("/saveEmp")
+    public String  saveEmployee(@RequestBody String name){
+        System.out.println(name);
+        return name;
+    }
 
 
 
