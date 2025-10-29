@@ -17,4 +17,7 @@ public class StudentDTO {
     private String rollNo;
     private LocalDate localDate;
     private Boolean active;
+    private String roles;
+    private String email;
+
 }

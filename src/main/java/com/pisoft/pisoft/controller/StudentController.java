@@ -3,6 +3,7 @@ package com.pisoft.pisoft.controller;
 import com.pisoft.pisoft.dto.StudentDTO;
 import com.pisoft.pisoft.entity.Student;
 import com.pisoft.pisoft.service.StudentService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,36 +19,30 @@ public class StudentController {
 
     @GetMapping("/getAll")
     public List<StudentDTO> studentList(){
-
         return studentService.findAll();
     }
 
     @PostMapping("/saveStudent")
-    public StudentDTO saveStudent(@RequestBody Student student){
+    public StudentDTO saveStudent(@RequestBody @Valid Student student){
         return studentService.save(student);
+
+
     }
 
     @GetMapping("/getById/{studentId}")
     public StudentDTO studentList(@PathVariable(value = "studentId") Integer id){
-        StudentDTO studentDTO = studentService.findById(id);
-        return studentDTO;
+        return studentService.findById(id);
     }
 
     @DeleteMapping("/deleteStudent/{studentId}")
     public Boolean deleteStudentById(@PathVariable Integer studentId){
 
-        Boolean b = studentService.deleteStudentById(studentId);
-        return b;
+        return studentService.deleteStudentById(studentId);
     }
 
     @PutMapping("/updateStudent/{studentId}")
     public StudentDTO FullyUpdateStudent(@PathVariable Integer studentId
                                          ,@RequestBody Student student){
-
-        StudentDTO studentDTO = studentService.updateWholeStudent(studentId, student);
-        return  studentDTO;
-
+        return studentService.updateWholeStudent(studentId, student);
     }
-
-
 }

@@ -26,9 +26,6 @@ public class PisoftApplication  implements  CommandLineRunner{
         this.dbService = dbService;
     }
 
-
-
-
     public static void main(String[] args) {
 		SpringApplication.run(PisoftApplication.class, args);
 	}
