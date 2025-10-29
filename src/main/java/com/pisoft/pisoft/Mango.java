@@ -15,7 +15,7 @@ public class Mango {
 
     @PostConstruct
     void invokeBefore(){
-        System.out.println("start first......");
+        System.out.println("starts first...... ");
     }
 
     @PreDestroy
