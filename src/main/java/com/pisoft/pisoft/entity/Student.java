@@ -11,6 +11,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Getter
@@ -29,9 +30,8 @@ public class Student {
     private String name;
     private String rollNo;
 
-//    @Digits(integer = 3 , fraction = 2 )
-//    @DecimalMin(value = "2")
-    private Double salary;
+    @Digits(integer = 3 , fraction = 2 )
+    private BigDecimal salary;
 
     @Past
     private LocalDate localDate;

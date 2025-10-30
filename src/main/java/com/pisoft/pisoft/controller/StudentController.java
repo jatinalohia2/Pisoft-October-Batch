@@ -2,47 +2,57 @@ package com.pisoft.pisoft.controller;
 
 import com.pisoft.pisoft.dto.StudentDTO;
 import com.pisoft.pisoft.entity.Student;
+import com.pisoft.pisoft.exception.ResourceNotFound;
 import com.pisoft.pisoft.service.StudentService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/student")
-@RequiredArgsConstructor  // it will create all const.. on your behalf..
+@RequiredArgsConstructor
 public class StudentController {
 
     private final StudentService studentService;
 
     @GetMapping("/getAll")
-    public List<StudentDTO> studentList(){
-        return studentService.findAll();
+    public ResponseEntity<List<StudentDTO>> getAllStudents() {
+        return ResponseEntity.ok(studentService.findAll());
     }
 
     @PostMapping("/saveStudent")
-    public StudentDTO saveStudent(@RequestBody @Valid Student student){
-        return studentService.save(student);
-
-
+    public ResponseEntity<StudentDTO> saveStudent(@RequestBody @Valid Student student) {
+        StudentDTO studentDTO = studentService.save(student);
+        return new ResponseEntity<>(studentDTO, HttpStatus.CREATED);
     }
 
     @GetMapping("/getById/{studentId}")
-    public StudentDTO studentList(@PathVariable(value = "studentId") Integer id){
-        return studentService.findById(id);
+    public ResponseEntity<StudentDTO> getStudentById(@PathVariable Integer studentId) {
+        StudentDTO studentDTO = studentService.findByStudentId(studentId);
+        return ResponseEntity.ok(studentDTO);
     }
 
     @DeleteMapping("/deleteStudent/{studentId}")
-    public Boolean deleteStudentById(@PathVariable Integer studentId){
-
-        return studentService.deleteStudentById(studentId);
+    public ResponseEntity<String> deleteStudentById(@PathVariable Integer studentId) {
+        studentService.deleteStudentById(studentId);
+        return ResponseEntity.ok("Student successfully deleted");
     }
 
     @PutMapping("/updateStudent/{studentId}")
-    public StudentDTO FullyUpdateStudent(@PathVariable Integer studentId
-                                         ,@RequestBody Student student){
-        return studentService.updateWholeStudent(studentId, student);
+    public ResponseEntity<StudentDTO> updateStudent(
+            @PathVariable Integer studentId,
+            @RequestBody Student student) {
+        StudentDTO updatedStudent = studentService.updateWholeStudent(studentId, student);
+        return ResponseEntity.ok(updatedStudent);
+    }
+
+    @ExceptionHandler(ResourceNotFound.class)
+    public ResponseEntity<String> handleResourceNotFound(ResourceNotFound e) {
+        System.out.println("Error: " + e.getMessage());
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
     }
 }
