@@ -1,5 +1,6 @@
 package com.pisoft.pisoft.controller;
 
+import com.pisoft.pisoft.annotion.Skip;
 import com.pisoft.pisoft.dto.StudentDTO;
 import com.pisoft.pisoft.entity.Student;
 import com.pisoft.pisoft.exception.ResourceNotFound;
@@ -15,6 +16,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/student")
 @RequiredArgsConstructor
+@Skip
 public class StudentController {
 
     private final StudentService studentService;
@@ -48,11 +50,5 @@ public class StudentController {
             @RequestBody Student student) {
         StudentDTO updatedStudent = studentService.updateWholeStudent(studentId, student);
         return ResponseEntity.ok(updatedStudent);
-    }
-
-    @ExceptionHandler(ResourceNotFound.class)
-    public ResponseEntity<String> handleResourceNotFound(ResourceNotFound e) {
-        System.out.println("Error: " + e.getMessage());
-        return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
     }
 }

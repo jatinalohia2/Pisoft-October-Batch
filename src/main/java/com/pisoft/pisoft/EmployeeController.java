@@ -1,16 +1,28 @@
 package com.pisoft.pisoft;
 
+import com.pisoft.pisoft.exception.ResourceNotFound;
+import com.pisoft.pisoft.service.StudentService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "/employee")
-
+@RequiredArgsConstructor
 public class EmployeeController {
 
+    private final StudentService studentService;
+
+//    @ExceptionHandler(ResourceNotFound.class)
+//    public ResponseEntity<String> handleResourceNotFound(ResourceNotFound e) {
+//        return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+//    }
 
     @GetMapping(path = "/secretKey")
     public String getSecretKey(){
+        studentService.findByStudentId(1);
         return "jatinabc";
     }
 
