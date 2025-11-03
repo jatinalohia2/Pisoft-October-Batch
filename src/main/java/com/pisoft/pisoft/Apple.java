@@ -6,6 +6,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class Apple {
 
+
+
 //    @Autowired
 //    Mango mango;
 

@@ -2,8 +2,10 @@ package com.pisoft.pisoft.controller;
 
 import com.pisoft.pisoft.annotion.Skip;
 import com.pisoft.pisoft.dto.StudentDTO;
+import com.pisoft.pisoft.entity.Customer;
 import com.pisoft.pisoft.entity.Student;
 import com.pisoft.pisoft.exception.ResourceNotFound;
+import com.pisoft.pisoft.repository.CustomerRepository;
 import com.pisoft.pisoft.service.StudentService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -44,11 +46,21 @@ public class StudentController {
         return ResponseEntity.ok("Student successfully deleted");
     }
 
+
     @PutMapping("/updateStudent/{studentId}")
     public ResponseEntity<StudentDTO> updateStudent(
             @PathVariable Integer studentId,
             @RequestBody Student student) {
         StudentDTO updatedStudent = studentService.updateWholeStudent(studentId, student);
         return ResponseEntity.ok(updatedStudent);
+    }
+
+    private final CustomerRepository customerRepository;
+    @PostMapping("/saveCustomer")
+    public Customer saveCustomer(@RequestBody Customer customer){
+
+        System.out.println(customer);
+        // insert  into table
+        return customerRepository.save(customer);
     }
 }
