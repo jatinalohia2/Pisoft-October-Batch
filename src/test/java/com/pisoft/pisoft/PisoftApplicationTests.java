@@ -1,7 +1,10 @@
 package com.pisoft.pisoft;
 
 import com.pisoft.pisoft.entity.Product;
+import com.pisoft.pisoft.projection.CProductInfo;
+import com.pisoft.pisoft.projection.IProductInfo;
 import com.pisoft.pisoft.repository.ProductRepository;
+import com.pisoft.pisoft.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +19,9 @@ class PisoftApplicationTests {
 
     @Autowired
     private  ProductRepository productRepository;
+
+    @Autowired
+    private ProductService productService;
 
 	@Test
 	void contextLoads() {
@@ -57,10 +63,38 @@ class PisoftApplicationTests {
 
         Optional<Product> andPrice = productRepository.findByQuantityAndPrice(5, BigDecimal.valueOf(2000));
         System.out.println(andPrice.get());
-
         Optional<Product> byTitleLike = productRepository.findByTitleLike("%f%");
+    }
+
+    @Test
+    public void showAllProducts2(){
+
+        // this is for interface projection
+
+//        List<IProductInfo> productList = productRepository.findAllProductInfo();
+//
+//        for (IProductInfo p : productList){
+//            System.out.println(p);
+//        }
+
+        // this is for concrete class:
+
+        List<CProductInfo> productList = productRepository.findAllProductInfoConcrete();
+
+        for (CProductInfo p : productList){
+            System.out.println(p);
+        }
+    }
+
+    @Test
+    public void showProductId(){
+
+//        productService.getAllProductIds();
+
+//        productService.saveProduct();
 
 
+        productService.updateProductById(1L);
 
     }
 

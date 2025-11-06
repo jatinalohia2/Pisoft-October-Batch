@@ -7,6 +7,7 @@ import com.pisoft.pisoft.entity.Student;
 import com.pisoft.pisoft.exception.ResourceNotFound;
 import com.pisoft.pisoft.repository.CustomerRepository;
 import com.pisoft.pisoft.service.StudentService;
+import jakarta.persistence.EntityManager;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -22,6 +23,7 @@ import java.util.List;
 public class StudentController {
 
     private final StudentService studentService;
+    private final EntityManager entityManager;
 
     @GetMapping("/getAll")
     public ResponseEntity<List<StudentDTO>> getAllStudents() {

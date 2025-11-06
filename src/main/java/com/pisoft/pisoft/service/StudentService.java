@@ -31,6 +31,11 @@ public class StudentService {
 
     public StudentDTO findByStudentId(Integer id) {
         Student student = getStudentOrThrow(id);
+        Student student2 = getStudentOrThrow(id);
+
+        System.out.println(student == student2);
+
+
         return modelMapper.map(student, StudentDTO.class);
     }
 
