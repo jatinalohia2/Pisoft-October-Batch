@@ -92,8 +92,6 @@ class PisoftApplicationTests {
 //        productService.getAllProductIds();
 
 //        productService.saveProduct();
-
-
         productService.updateProductById(1L);
 
     }

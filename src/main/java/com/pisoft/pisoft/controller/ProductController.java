@@ -1,5 +1,6 @@
 package com.pisoft.pisoft.controller;
 
+import com.pisoft.pisoft.advise.ApiResponse;
 import com.pisoft.pisoft.annotion.Skip;
 import com.pisoft.pisoft.entity.Product;
 import com.pisoft.pisoft.repository.ProductRepository;
@@ -19,7 +20,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/products")
 @RequiredArgsConstructor
-@Skip
 public class ProductController {
 
     private final ProductRepository productRepository;
@@ -52,10 +52,10 @@ public class ProductController {
     }
 
     @GetMapping("/id")
-    public String getAllProductId(){
+    public ApiResponse<?> getAllProductId(){
 
         productService.getAllProductIds();
-        return "getting data";
+        return new ApiResponse<>("getting data");
 
     }
 
