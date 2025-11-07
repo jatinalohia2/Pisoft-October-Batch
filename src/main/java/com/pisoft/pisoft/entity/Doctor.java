@@ -1,11 +1,10 @@
 package com.pisoft.pisoft.entity;
 
-import com.pisoft.pisoft.enums.BloodGroup;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
@@ -17,26 +16,21 @@ import java.util.Set;
 @Builder
 @Entity
 @ToString
-public class Patient {
+public class Doctor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
     private Long id;
+
     private String name;
-    private String gender;
-    private LocalDate birthDate;
+    private String specialization;
+
+    @Email
     private String email;
-
-    @Enumerated(EnumType.STRING)
-    private BloodGroup bloodGroup;
-
     @CreationTimestamp
-    private LocalDateTime createdAt;
+    private LocalDateTime createAt;
 
-    @OneToOne(cascade = {CascadeType.ALL})
-    private Insurance insurance;
-
-    @OneToMany(mappedBy = "patient" , cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "doctor")
     private Set<Appointment> appointment = new HashSet<>();
 
 }
