@@ -33,10 +33,10 @@ public class Patient {
     @CreationTimestamp
     private LocalDateTime createdAt;
 
-    @OneToOne(cascade = {CascadeType.ALL})
+    @OneToOne(cascade = {CascadeType.ALL} ,  orphanRemoval = true)
     private Insurance insurance;
 
-    @OneToMany(mappedBy = "patient" , cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "patient" , cascade = CascadeType.ALL , fetch = FetchType.EAGER)
     private Set<Appointment> appointment = new HashSet<>();
 
 }

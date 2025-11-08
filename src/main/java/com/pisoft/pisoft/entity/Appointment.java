@@ -29,7 +29,7 @@ public class Appointment {
     @ToString.Exclude
     private Patient patient;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @ToString.Exclude
     private Doctor doctor;
 

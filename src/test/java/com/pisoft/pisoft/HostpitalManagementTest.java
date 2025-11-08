@@ -40,13 +40,25 @@ public class HostpitalManagementTest {
                 .insurance(null)
                 .birthDate(LocalDate.of(2022, 12, 12))
                 .bloodGroup(BloodGroup.A_POSITIVE)
-                .name("jatin")
-                .email("j@gmail.com")
-                .gender("male")
+                .name("aman")
+                .email("a@gmail.com")
+                .gender("female")
                 .build();
 
         Patient patient1 = patientService.savePatient(patient);
         System.out.println(patient1);
+
+        Patient patient2 = Patient.builder()
+                .insurance(null)
+                .birthDate(LocalDate.of(2022, 12, 12))
+                .bloodGroup(BloodGroup.A_POSITIVE)
+                .name("simran")
+                .email("s@gmail.com")
+                .gender("female")
+                .build();
+
+        Patient patient3 = patientService.savePatient(patient2);
+        System.out.println(patient3);
 
     }
 
@@ -81,12 +93,21 @@ public class HostpitalManagementTest {
     public void testBookAppointment(){
 
         Appointment appointment = Appointment.builder()
-                .reason("cancer")
-                .status("not well")
+                .reason("dummy2")
+                .status("not well2")
                 .build();
 
-        Appointment bookAppointment = appointmentService.bookAppointment(appointment, 1L, 1L);
+        Appointment bookAppointment = appointmentService.bookAppointment(appointment, 2L, 1L);
         System.out.println(bookAppointment);
+
+
+        Appointment appointment2 = Appointment.builder()
+                .reason("dummy2")
+                .status("not well2")
+                .build();
+
+        Appointment bookAppointment3 = appointmentService.bookAppointment(appointment2, 3L, 1L);
+        System.out.println(bookAppointment3);
     }
 
     @Test
@@ -100,12 +121,35 @@ public class HostpitalManagementTest {
                 .name("Cardio")
                 .build();
 
-
         Department department = departmentService.save(department1);
         Department department3 = departmentService.save(department2);
 
         Doctor doctor = doctorService.assignDepartmentsToDoctor(1L, Set.of(department, department3));
         System.out.println(doctor);
+
+    }
+
+
+    @Test
+    public void testRemoveInsuranceToPAtient(){
+        insuranceService.removeInsuranceToPatient(1L);
+    }
+
+    // fetch type :
+
+    @Test
+    public void getAllPatient(){
+
+        List<Patient> patientList = patientService.findAll();
+
+        for (Patient patient : patientList) {
+            System.out.println(patient);
+            System.out.println(patient.getAppointment());
+        }
+
+
+//        patientService.rem
+
 
 
     }
