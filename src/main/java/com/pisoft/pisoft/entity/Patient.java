@@ -39,4 +39,5 @@ public class Patient {
     @OneToMany(mappedBy = "patient" , cascade = CascadeType.ALL , fetch = FetchType.EAGER)
     private Set<Appointment> appointment = new HashSet<>();
 
+
 }
