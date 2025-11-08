@@ -1,7 +1,6 @@
-package com.pisoft.pisoft;
+package com.pisoft.pisoft.testing;
 
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 @Component

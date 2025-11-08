@@ -1,4 +1,4 @@
-package com.pisoft.pisoft;
+package com.pisoft.pisoft.testing;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;

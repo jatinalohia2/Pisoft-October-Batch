@@ -1,4 +1,4 @@
-package com.pisoft.pisoft;
+package com.pisoft.pisoft.testing;
 
 import org.springframework.stereotype.Component;
 

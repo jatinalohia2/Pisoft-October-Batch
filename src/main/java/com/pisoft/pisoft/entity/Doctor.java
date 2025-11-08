@@ -31,6 +31,16 @@ public class Doctor {
     private LocalDateTime createAt;
 
     @OneToMany(mappedBy = "doctor")
+    @ToString.Exclude
     private Set<Appointment> appointment = new HashSet<>();
+
+    @ManyToMany
+            @JoinTable(
+                    name = "doctor_department", // this is the table name
+                    joinColumns = @JoinColumn(name = "doctor_id"),
+                    inverseJoinColumns = @JoinColumn(name = "department_id")
+            )
+    @ToString.Exclude
+    Set<Department> departments = new HashSet<>();
 
 }

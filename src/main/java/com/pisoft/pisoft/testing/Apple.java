@@ -1,6 +1,5 @@
-package com.pisoft.pisoft;
+package com.pisoft.pisoft.testing;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component

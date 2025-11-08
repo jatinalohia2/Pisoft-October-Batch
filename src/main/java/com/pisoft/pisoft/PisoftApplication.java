@@ -1,11 +1,11 @@
 package com.pisoft.pisoft;
 
+import com.pisoft.pisoft.testing.DBService;
+import com.pisoft.pisoft.testing.Mango;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication
 public class PisoftApplication  implements  CommandLineRunner{
@@ -20,7 +20,7 @@ public class PisoftApplication  implements  CommandLineRunner{
     Mango mango3;
 
     @Autowired
-    private  DBService dbService1;
+    private DBService dbService1;
 
     private final DBService dbService;
 
@@ -37,13 +37,13 @@ public class PisoftApplication  implements  CommandLineRunner{
     @Override
     public void run(String... args) throws Exception {
 
-        System.out.println(mango.hashCode());
-        System.out.println(mango2.hashCode());
-        System.out.println(mango3.hashCode());
-
-        System.out.println(mango == mango2);
-        String db = dbService.getDb();
-        System.out.println(db);
+//        System.out.println(mango.hashCode());
+//        System.out.println(mango2.hashCode());
+//        System.out.println(mango3.hashCode());
+//
+//        System.out.println(mango == mango2);
+//        String db = dbService.getDb();
+//        System.out.println(db);
 
 
     }

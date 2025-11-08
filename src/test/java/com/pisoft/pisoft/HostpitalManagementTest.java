@@ -1,19 +1,16 @@
 package com.pisoft.pisoft;
 
-import com.pisoft.pisoft.entity.Appointment;
-import com.pisoft.pisoft.entity.Doctor;
-import com.pisoft.pisoft.entity.Insurance;
-import com.pisoft.pisoft.entity.Patient;
+import com.pisoft.pisoft.entity.*;
 import com.pisoft.pisoft.enums.BloodGroup;
 import com.pisoft.pisoft.repository.DoctorRepository;
-import com.pisoft.pisoft.service.AppointmentService;
-import com.pisoft.pisoft.service.InsuranceService;
-import com.pisoft.pisoft.service.PatientService;
+import com.pisoft.pisoft.service.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;
+import java.util.List;
+import java.util.Set;
 
 @SpringBootTest
 public class HostpitalManagementTest {
@@ -29,6 +26,12 @@ public class HostpitalManagementTest {
 
     @Autowired
     private DoctorRepository doctorRepository;
+
+    @Autowired
+    private DepartmentService departmentService;
+
+    @Autowired
+    private DoctorService doctorService;
 
     @Test
     public void savePatient(){
@@ -84,5 +87,26 @@ public class HostpitalManagementTest {
 
         Appointment bookAppointment = appointmentService.bookAppointment(appointment, 1L, 1L);
         System.out.println(bookAppointment);
+    }
+
+    @Test
+    public void testAssignDepartmentsToDoctor(){
+
+        Department department1 = Department.builder()
+                .name("Ortho")
+                .build();
+
+        Department department2 = Department.builder()
+                .name("Cardio")
+                .build();
+
+
+        Department department = departmentService.save(department1);
+        Department department3 = departmentService.save(department2);
+
+        Doctor doctor = doctorService.assignDepartmentsToDoctor(1L, Set.of(department, department3));
+        System.out.println(doctor);
+
+
     }
 }
