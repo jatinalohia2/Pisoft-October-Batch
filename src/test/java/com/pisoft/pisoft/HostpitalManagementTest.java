@@ -140,17 +140,18 @@ public class HostpitalManagementTest {
     @Test
     public void getAllPatient(){
 
-        List<Patient> patientList = patientService.findAll();
+//        List<Patient> patientList = patientService.findAll();
+//
+//        for (Patient patient : patientList) {
+//            System.out.println(patient);
+//        }
 
-        for (Patient patient : patientList) {
+
+        List<Patient> patientList2 = patientService.findAllPatientsAppointments();
+
+        for (Patient patient : patientList2) {
             System.out.println(patient);
-            System.out.println(patient.getAppointment());
         }
-
-
-//        patientService.rem
-
-
 
     }
 }

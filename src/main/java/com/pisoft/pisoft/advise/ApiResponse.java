@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @Builder
 public class ApiResponse<T> {
 
-    @JsonFormat(pattern = "dd:MM:yyyy hh:mm:ss")
+//    @JsonFormat(pattern = "dd:MM:yyyy hh:mm:ss")
     private LocalDateTime localDateTime;
     private T data;
     private ApiError apiError;

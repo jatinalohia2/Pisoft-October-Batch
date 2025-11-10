@@ -19,6 +19,7 @@ public class PisoftApplication  implements  CommandLineRunner{
     @Autowired
     Mango mango3;
 
+
     @Autowired
     private DBService dbService1;
 
@@ -44,6 +45,8 @@ public class PisoftApplication  implements  CommandLineRunner{
 //        System.out.println(mango == mango2);
 //        String db = dbService.getDb();
 //        System.out.println(db);
+        System.out.println("this is me ");
+
 
 
     }

@@ -27,6 +27,7 @@ public class StudentController {
 
     @GetMapping("/getAll")
     public ResponseEntity<List<StudentDTO>> getAllStudents() {
+        System.out.println("hi");
         return ResponseEntity.ok(studentService.findAll());
     }
 

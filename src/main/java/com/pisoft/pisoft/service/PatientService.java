@@ -22,6 +22,11 @@ public class PatientService {
     public List<Patient> findAll() {
         return patientRepository.findAll();
     }
+
+    public List<Patient> findAllPatientsAppointments(){
+        return patientRepository.findAllPatientsAppointments();
+    }
+
 }
 
 
