@@ -4,6 +4,7 @@ import com.pisoft.pisoft.entity.Product;
 import com.pisoft.pisoft.projection.CProductInfo;
 import com.pisoft.pisoft.projection.IProductInfo;
 import com.pisoft.pisoft.repository.ProductRepository;
+import com.pisoft.pisoft.service.InsuranceService;
 import com.pisoft.pisoft.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
@@ -22,6 +23,14 @@ class PisoftApplicationTests {
 
     @Autowired
     private ProductService productService;
+
+    @Autowired
+    private InsuranceService insuranceService;
+
+    @Test
+    public void showAllLogs(){
+        insuranceService.hello();
+    }
 
 	@Test
 	void contextLoads() {
@@ -94,6 +103,12 @@ class PisoftApplicationTests {
 //        productService.saveProduct();
         productService.updateProductById(1L);
 
+    }
+
+
+    @Test
+    public void testLogs(){
+        productService.showAllLogs();
     }
 
 

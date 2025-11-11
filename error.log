@@ -1,0 +1,57 @@
+2025-11-11T10:56:00.847+05:30  INFO 11116 --- [pisoft] [restartedMain] com.pisoft.pisoft.PisoftApplication      : Starting PisoftApplication using Java 21.0.2 with PID 11116 (E:\ALL YOUTUBE CONTENT HERE\Pisoft october batch\Pisoft-October-Batch-master\target\classes started by JATIN in E:\ALL YOUTUBE CONTENT HERE\Pisoft october batch\Pisoft-October-Batch-master)
+2025-11-11T10:56:00.859+05:30  INFO 11116 --- [pisoft] [restartedMain] com.pisoft.pisoft.PisoftApplication      : No active profile set, falling back to 1 default profile: "default"
+2025-11-11T10:56:02.909+05:30  INFO 11116 --- [pisoft] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-11T10:56:03.676+05:30  INFO 11116 --- [pisoft] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 760 ms. Found 8 JPA repository interfaces.
+2025-11-11T10:56:05.031+05:30  INFO 11116 --- [pisoft] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-11-11T10:56:05.070+05:30  INFO 11116 --- [pisoft] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-11-11T10:56:05.071+05:30  INFO 11116 --- [pisoft] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
+2025-11-11T10:56:05.284+05:30  INFO 11116 --- [pisoft] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-11-11T10:56:05.285+05:30  INFO 11116 --- [pisoft] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4411 ms
+2025-11-11T10:56:05.689+05:30  INFO 11116 --- [pisoft] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-11T10:56:05.704+05:30  INFO 11116 --- [pisoft] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-11-11T10:56:05.856+05:30  INFO 11116 --- [pisoft] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-11-11T10:56:05.867+05:30  INFO 11116 --- [pisoft] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2025-11-11T10:56:06.034+05:30  INFO 11116 --- [pisoft] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@49d76ad0
+2025-11-11T10:56:06.036+05:30  INFO 11116 --- [pisoft] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2025-11-11T10:56:06.042+05:30  INFO 11116 --- [pisoft] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-2)']
+	Database driver: undefined/unknown
+	Database version: 8.0.34
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-11-11T10:56:07.817+05:30  INFO 11116 --- [pisoft] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-11-11T10:56:07.925+05:30  INFO 11116 --- [pisoft] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-11T10:56:09.477+05:30  WARN 11116 --- [pisoft] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-11-11T10:56:10.287+05:30  INFO 11116 --- [pisoft] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-11-11T10:56:10.309+05:30  INFO 11116 --- [pisoft] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-11-11T10:56:10.324+05:30  INFO 11116 --- [pisoft] [restartedMain] com.pisoft.pisoft.PisoftApplication      : Started PisoftApplication in 9.77 seconds (process running for 129.396)
+2025-11-11T10:56:10.332+05:30  INFO 11116 --- [pisoft] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-11-11T10:56:11.615+05:30  INFO 1780 --- [pisoft] [main] c.pisoft.pisoft.PisoftApplicationTests   : Starting PisoftApplicationTests using Java 21.0.2 with PID 1780 (started by JATIN in E:\ALL YOUTUBE CONTENT HERE\Pisoft october batch\Pisoft-October-Batch-master)
+2025-11-11T10:56:11.619+05:30  INFO 1780 --- [pisoft] [main] c.pisoft.pisoft.PisoftApplicationTests   : No active profile set, falling back to 1 default profile: "default"
+2025-11-11T10:56:15.021+05:30  INFO 1780 --- [pisoft] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-11T10:56:15.363+05:30  INFO 1780 --- [pisoft] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 293 ms. Found 8 JPA repository interfaces.
+2025-11-11T10:56:17.514+05:30  INFO 1780 --- [pisoft] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-11T10:56:17.731+05:30  INFO 1780 --- [pisoft] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.29.Final
+2025-11-11T10:56:17.933+05:30  INFO 1780 --- [pisoft] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-11-11T10:56:19.573+05:30  INFO 1780 --- [pisoft] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-11-11T10:56:19.713+05:30  INFO 1780 --- [pisoft] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-11-11T10:56:20.392+05:30  INFO 11116 --- [pisoft] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-11-11T10:56:20.453+05:30  INFO 11116 --- [pisoft] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-11-11T10:56:20.458+05:30  INFO 11116 --- [pisoft] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-11-11T10:56:20.462+05:30  INFO 11116 --- [pisoft] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2025-11-11T10:56:20.488+05:30  INFO 11116 --- [pisoft] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2025-11-11T10:56:21.651+05:30  INFO 1780 --- [pisoft] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@32328dc4
+2025-11-11T10:56:21.660+05:30  INFO 1780 --- [pisoft] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-11-11T10:56:22.235+05:30  INFO 1780 --- [pisoft] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.34
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-11-11T10:56:28.271+05:30  INFO 1780 --- [pisoft] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-11-11T10:56:28.552+05:30  INFO 1780 --- [pisoft] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-11T10:56:29.628+05:30  INFO 1780 --- [pisoft] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.

@@ -44,7 +44,5 @@ public class PisoftApplication  implements  CommandLineRunner{
 //        System.out.println(mango == mango2);
 //        String db = dbService.getDb();
 //        System.out.println(db);
-
-
     }
 }
