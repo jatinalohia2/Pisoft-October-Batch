@@ -4,7 +4,6 @@ import com.pisoft.pisoft.annotion.Skip;
 import com.pisoft.pisoft.dto.StudentDTO;
 import com.pisoft.pisoft.entity.Customer;
 import com.pisoft.pisoft.entity.Student;
-import com.pisoft.pisoft.exception.ResourceNotFound;
 import com.pisoft.pisoft.repository.CustomerRepository;
 import com.pisoft.pisoft.service.StudentService;
 import jakarta.persistence.EntityManager;

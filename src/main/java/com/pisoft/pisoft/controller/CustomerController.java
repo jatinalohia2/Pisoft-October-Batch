@@ -4,9 +4,7 @@ import com.pisoft.pisoft.annotion.Skip;
 import com.pisoft.pisoft.entity.Customer;
 import com.pisoft.pisoft.repository.CustomerRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.service.annotation.PostExchange;
 
 import java.util.List;
 
