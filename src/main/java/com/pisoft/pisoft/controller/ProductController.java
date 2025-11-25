@@ -45,7 +45,6 @@ public class ProductController {
 
         Sort sort = Sort.by(Sort.Order.desc(sortBy));
         Pageable pageable = PageRequest.of(pageNumber, PAGE_SIZE , sort);
-
         return productRepository.findAll(pageable).getContent();
     }
 
