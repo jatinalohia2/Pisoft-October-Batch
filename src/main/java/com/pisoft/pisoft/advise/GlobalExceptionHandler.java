@@ -7,6 +7,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import javax.naming.AuthenticationException;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -60,6 +61,21 @@ public class GlobalExceptionHandler {
                 .localDateTime(LocalDateTime.now())
                 .httpStatus(HttpStatus.NOT_FOUND)
                 .message("not found")
+                .errors(List.of(e.getMessage()))
+                .build();
+
+        return BuildResponseHanlder(apiError);
+    }
+
+
+    @ExceptionHandler(AuthenticationException.class)
+    public ResponseEntity<ApiResponse<?>> authenticationException(AuthenticationException e) {
+
+        ApiError apiError = ApiError.builder()
+
+                .localDateTime(LocalDateTime.now())
+                .httpStatus(HttpStatus.UNAUTHORIZED)
+                .message("UnAuthorized")
                 .errors(List.of(e.getMessage()))
                 .build();
 

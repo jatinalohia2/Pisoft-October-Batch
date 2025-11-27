@@ -27,9 +27,9 @@ public class GlobalResponseHandler implements ResponseBodyAdvice<Object> {
         // 🚫 Skip Swagger and OpenAPI endpoints
         String path = request.getURI().getPath();
 
-        System.out.println("path : "+path);
 
         if (path.startsWith("/v3/api-docs") || path.startsWith("/swagger-ui") || path.startsWith("/actuator")) {
+
             System.out.println("entering in this ");
             return body; // don’t wrap
         }

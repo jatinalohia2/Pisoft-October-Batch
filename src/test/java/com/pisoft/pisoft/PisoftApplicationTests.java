@@ -1,9 +1,11 @@
 package com.pisoft.pisoft;
 
 import com.pisoft.pisoft.entity.Product;
+import com.pisoft.pisoft.entity.Users;
 import com.pisoft.pisoft.projection.CProductInfo;
 import com.pisoft.pisoft.repository.ProductRepository;
 import com.pisoft.pisoft.service.InsuranceService;
+import com.pisoft.pisoft.service.JwtService;
 import com.pisoft.pisoft.service.ProductService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,9 @@ class PisoftApplicationTests {
     @Autowired
     private InsuranceService insuranceService;
 
+    @Autowired
+    private JwtService jwtService;
+
     @Test
     public void showAllLogs(){
         insuranceService.hello();
@@ -32,7 +37,23 @@ class PisoftApplicationTests {
 
 	@Test
 	void contextLoads() {
-	}
+
+        Users users = Users
+                .builder()
+                .id(1L)
+                .email("j@gmail.com")
+                .password("123")
+                .build();
+
+        String generatedToken = jwtService.generateToken(users);
+        System.out.println("token : "+generatedToken);
+
+        Long userIdFromToken = jwtService.generateUserIdFromToken(generatedToken);
+
+        System.out.println("userIdFromToken : "+userIdFromToken);
+
+
+    }
 
     @Test
     void saveProduct(){

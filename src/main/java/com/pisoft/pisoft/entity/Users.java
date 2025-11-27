@@ -7,12 +7,12 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
-
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
+@Builder
 @ToString
 public class Users implements UserDetails {
 
@@ -25,11 +25,10 @@ public class Users implements UserDetails {
 
     private String password;
 
+    private String name;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-
-        // user roles :
-
         return List.of();
     }
 
@@ -39,8 +38,28 @@ public class Users implements UserDetails {
     }
 
     @Override
-    public  String getPassword(){
+    public String getPassword() {
         return this.password;
     }
 
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 }
+
