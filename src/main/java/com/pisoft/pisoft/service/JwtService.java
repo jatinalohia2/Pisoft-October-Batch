@@ -48,4 +48,26 @@ public class JwtService {
 
     }
 
+
+    public String generateAccessToken(Users users){
+
+        return Jwts.builder()
+                .setSubject(users.getId().toString())
+                .claim("email", users.getUsername())
+                .claim("roles", Set.of("ADMIN", "USER"))
+                .signWith(getSecretKey())
+                .setIssuedAt(new Date())
+                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60)) // 1 min
+                .compact();
+    }
+
+    public String generateRefreshToken(Users users){
+
+        return Jwts.builder()
+                .setSubject(users.getId().toString())
+                .signWith(getSecretKey())
+                .setIssuedAt(new Date())
+                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 2)) // 2 min
+                .compact();
+    }
 }

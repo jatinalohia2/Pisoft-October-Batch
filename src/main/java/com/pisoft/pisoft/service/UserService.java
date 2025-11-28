@@ -7,12 +7,12 @@ import com.pisoft.pisoft.exception.ResourceNotFound;
 import com.pisoft.pisoft.repository.UsersRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.security.core.AuthenticationException;
 
 import java.util.Optional;
 
@@ -26,9 +26,10 @@ public class UserService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return usersRepository.findByEmail(username).orElseThrow(()->
-                new AuthenticationException("User not found with email : " + username) {
+        return usersRepository.findByEmail(username)
+                .orElseThrow(() -> new AuthenticationException("User not found with email : " + username) {
                 });
+
     }
 
     public UsersDto signUp(SignUpDto signUpDto) {

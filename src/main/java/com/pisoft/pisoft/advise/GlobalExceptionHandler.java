@@ -1,13 +1,15 @@
 package com.pisoft.pisoft.advise;
 
 import com.pisoft.pisoft.exception.ResourceNotFound;
+import io.jsonwebtoken.JwtException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import javax.naming.AuthenticationException;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -76,6 +78,20 @@ public class GlobalExceptionHandler {
                 .localDateTime(LocalDateTime.now())
                 .httpStatus(HttpStatus.UNAUTHORIZED)
                 .message("UnAuthorized")
+                .errors(List.of(e.getMessage()))
+                .build();
+
+        return BuildResponseHanlder(apiError);
+    }
+
+    @ExceptionHandler(JwtException.class)
+    public ResponseEntity<ApiResponse<?>> authenticationException(JwtException e) {
+
+        ApiError apiError = ApiError.builder()
+
+                .localDateTime(LocalDateTime.now())
+                .httpStatus(HttpStatus.BAD_REQUEST)
+                .message("Jwt Exception")
                 .errors(List.of(e.getMessage()))
                 .build();
 
