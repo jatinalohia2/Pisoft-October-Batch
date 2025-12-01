@@ -1,6 +1,7 @@
 package com.pisoft.pisoft.config;
 
 import com.pisoft.pisoft.filter.JwtAuthFilter;
+import com.pisoft.pisoft.handler.OAuth2SuccessHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,6 +20,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class WebSecurityConfig {
 
     private final JwtAuthFilter jwtAuthFilter;
+    private final OAuth2SuccessHandler oAuth2SuccessHandler;
 
     @Bean
     public SecurityFilterChain getSecurityFilterChain(HttpSecurity httpSecurity) throws Exception {
@@ -32,7 +34,7 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests(auth->
 
 //                        auth.requestMatchers("/products/getAll").hasAnyRole("ADMIN" , "USER")
-                                auth .requestMatchers("/products" , "auth/**").permitAll()
+                                auth .requestMatchers("/products" , "auth/**" , "/login" , "/home.html").permitAll()
                                 .anyRequest().authenticated()
                 );
 
@@ -42,7 +44,11 @@ public class WebSecurityConfig {
                                 session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 
                                 .addFilterBefore(jwtAuthFilter , UsernamePasswordAuthenticationFilter.class)
-                                .formLogin(login->login.disable());
+                                .formLogin(login->login.disable())
+
+                                .oauth2Login(login->login.failureUrl("/login?error=true")
+                                        .successHandler(oAuth2SuccessHandler))
+                        ;
 //                        httpSecurity.formLogin(form -> form.disable());
 
         return httpSecurity.build();

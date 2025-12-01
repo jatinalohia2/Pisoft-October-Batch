@@ -50,4 +50,12 @@ public class UserService implements UserDetailsService {
         return usersRepository.findById(userId).orElseThrow(()->
                 new ResourceNotFound("User not found with id : "+userId));
     }
+
+    public Users findByEmail(String email) {
+        return usersRepository.findByEmail(email).orElse(null);
+    }
+
+    public Users save(Users users) {
+        return usersRepository.save(users);
+    }
 }
