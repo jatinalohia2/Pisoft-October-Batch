@@ -1,12 +1,18 @@
 package com.pisoft.pisoft.entity;
 
+import com.pisoft.pisoft.enums.Roles;
+import com.pisoft.pisoft.enums.UserPermissions;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -27,9 +33,29 @@ public class Users implements UserDetails {
 
     private String name;
 
+    @ElementCollection(fetch = FetchType.EAGER)
+    @Enumerated(EnumType.STRING)
+    private Set<Roles> roles;
+
+    @ElementCollection(fetch = FetchType.EAGER)
+    @Enumerated(EnumType.STRING)
+    private Set<UserPermissions> permissions;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of();
+
+        Set<SimpleGrantedAuthority> authorities = new HashSet<>();
+
+        roles.stream()
+                .map(roles1 -> authorities.add(new SimpleGrantedAuthority("ROLE_"+roles1.name())))
+                .collect(Collectors.toSet());
+
+        permissions.stream()
+                .map(permissions -> authorities.add(new SimpleGrantedAuthority(permissions.name())))
+                .collect(Collectors.toSet());
+
+        return authorities;
+
     }
 
     @Override
@@ -42,24 +68,6 @@ public class Users implements UserDetails {
         return this.password;
     }
 
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
 
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true;
-    }
 }
 

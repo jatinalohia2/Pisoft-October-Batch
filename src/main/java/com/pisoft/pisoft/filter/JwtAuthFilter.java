@@ -33,31 +33,32 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
         // Bearer fshfgsdfgasogfasdaosdg
 
-       try{
-           String authorization = request.getHeader("Authorization");
+        try {
+            String authorization = request.getHeader("Authorization");
 
-           if (authorization == null || !authorization.startsWith("Bearer ")){
-               filterChain.doFilter(request , response);
-               return;
-           }
+            if (authorization == null || !authorization.startsWith("Bearer ")) {
+                filterChain.doFilter(request, response);
+                return;
+            }
 
-           String token = authorization.substring(7);
-           Long userId = jwtService.generateUserIdFromToken(token);
+            String token = authorization.substring(7);
+            Long userId = jwtService.generateUserIdFromToken(token);
 
-           if (userId!=null && SecurityContextHolder.getContext().getAuthentication() == null){
+            if (userId != null && SecurityContextHolder.getContext().getAuthentication() == null) {
 
-               Users users = userService.findById(userId);
+                Users users = userService.findById(userId);
 
-               UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
-                       users , null , null
-               );
+                UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
+                        users, null, users.getAuthorities()
+                );
 
-               authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request)); // system info store :
-               SecurityContextHolder.getContext().setAuthentication(authenticationToken); // store user  in the context holder
-           }
-           filterChain.doFilter(request , response);
-       } catch (Exception e) {
-           handlerExceptionResolver.resolveException(request, response , null , e);
-       }
+                authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request)); // system info store :
+                SecurityContextHolder.getContext().setAuthentication(authenticationToken); // store user  in the context holder
+            }
+            filterChain.doFilter(request, response);
+        } catch (Exception e) {
+            handlerExceptionResolver.resolveException(request, response, null, e);
+            return;   //  important: stop chain
+        }
     }
 }

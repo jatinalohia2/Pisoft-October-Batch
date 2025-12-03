@@ -5,11 +5,11 @@ import io.jsonwebtoken.JwtException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import java.nio.file.AccessDeniedException;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -86,6 +86,20 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(JwtException.class)
     public ResponseEntity<ApiResponse<?>> authenticationException(JwtException e) {
+
+        ApiError apiError = ApiError.builder()
+
+                .localDateTime(LocalDateTime.now())
+                .httpStatus(HttpStatus.BAD_REQUEST)
+                .message("Jwt Exception")
+                .errors(List.of(e.getMessage()))
+                .build();
+
+        return BuildResponseHanlder(apiError);
+    }
+
+    @ExceptionHandler(AccessDeniedException.class)
+    public ResponseEntity<ApiResponse<?>> accessDeniedException(AccessDeniedException e) {
 
         ApiError apiError = ApiError.builder()
 
